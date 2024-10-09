@@ -1,0 +1,37 @@
+﻿@page "/"
+@page "/index"
+@page "/gadgets"
+@rendermode InteractiveServer
+
+<div class="text-center">
+    <h1 class="display-4">Gadgets</h1>
+</div>
+
+<div>
+    <table class="table">
+        <tr>
+            <th scope="col">Key</th>
+            <th scope="col">Gadget Type</th>
+            <th scope="col">Usage Instructions</th>
+            <th scope="col"></th>
+        </tr>
+        @foreach (var gadget in Data)
+        {
+            <tr>
+                <td>@gadget.Id</td>
+                <td>@gadget.GadgetType</td>
+                <td>@gadget.UsageInstructions</td>
+                <td>
+                    <div class="text-end">
+                        <button type="button" class="btn btn-secondary me-2" @onclick="@(() => MoveGadgetDown(gadget.Id))">
+                            <i class="bi bi-caret-down-fill h3"></i>
+                        </button>
+                        <button type="button" class="btn btn-secondary me-2" @onclick="@(() => MoveGadgetUp(gadget.Id))">
+                            <i class="bi bi-caret-up-fill h3"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
